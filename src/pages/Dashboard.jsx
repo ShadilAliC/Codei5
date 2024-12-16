@@ -21,9 +21,9 @@ function Dashboard() {
     fetchData()
   },[])
   return (
-    <div className="p-4">
+    <div className="p-5 h-fit  sm:p-6 w-full">
       <h1 className="text-2xl font-bold">Dashboard</h1>
-      <div className="w-[95%] mt-2 sm:w-[25%] bg-white text-black relative rounded-[2.5em] p-8 h-48 transform transition-transform duration-400 hover:scale-95 active:scale-90 shadow-xl">
+      <div className="w-full mt-2  bg-white text-black relative rounded-[2.5em] p-8 h-48 transform transition-transform duration-400 hover:scale-95 active:scale-90 shadow-xl">
         <div className="flex flex-col h-full transition-transform duration-400 hover:scale-[0.96]">
           <div className="flex ">
             <div className="bg-secondary w-10 h-10 rounded-full flex items-center justify-center">

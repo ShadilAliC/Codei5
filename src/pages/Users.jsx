@@ -37,6 +37,86 @@ const users = [
     dateOfJoining: "2023-03-20",
     status: "Active",
   },
+  {
+    firstName: "John",
+    lastName: "Doe",
+    email: "john.doe@example.com",
+    mobile: "+1 234 567 8901",
+    image: "/placeholder.svg?height=50&width=50",
+    designation: "Software Engineer",
+    dateOfJoining: "2023-01-15",
+    status: "Active",
+  },
+  {
+    firstName: "Jane",
+    lastName: "Smith",
+    email: "jane.smith@example.com",
+    mobile: "+1 987 654 3210",
+    image: "/placeholder.svg?height=50&width=50",
+    designation: "Product Manager",
+    dateOfJoining: "2022-11-01",
+    status: "Block",
+  },
+  {
+    firstName: "Bob",
+    lastName: "Johnson",
+    email: "bob.johnson@example.com",
+    mobile: "+1 555 123 4567",
+    image: "/placeholder.svg?height=50&width=50",
+    designation: "UX Designer",
+    dateOfJoining: "2023-03-20",
+    status: "Active",
+  },
+  {
+    firstName: "John",
+    lastName: "Doe",
+    email: "john.doe@example.com",
+    mobile: "+1 234 567 8901",
+    image: "/placeholder.svg?height=50&width=50",
+    designation: "Software Engineer",
+    dateOfJoining: "2023-01-15",
+    status: "Active",
+  },
+  {
+    firstName: "Jane",
+    lastName: "Smith",
+    email: "jane.smith@example.com",
+    mobile: "+1 987 654 3210",
+    image: "/placeholder.svg?height=50&width=50",
+    designation: "Product Manager",
+    dateOfJoining: "2022-11-01",
+    status: "Block",
+  },
+  {
+    firstName: "Bob",
+    lastName: "Johnson",
+    email: "bob.johnson@example.com",
+    mobile: "+1 555 123 4567",
+    image: "/placeholder.svg?height=50&width=50",
+    designation: "UX Designer",
+    dateOfJoining: "2023-03-20",
+    status: "Active",
+  },
+  {
+    firstName: "John",
+    lastName: "Doe",
+    email: "john.doe@example.com",
+    mobile: "+1 234 567 8901",
+    image: "/placeholder.svg?height=50&width=50",
+    designation: "Software Engineer",
+    dateOfJoining: "2023-01-15",
+    status: "Active",
+  },
+  {
+    firstName: "Jane",
+    lastName: "Smith",
+    email: "jane.smith@example.com",
+    mobile: "+1 987 654 3210",
+    image: "/placeholder.svg?height=50&width=50",
+    designation: "Product Manager",
+    dateOfJoining: "2022-11-01",
+    status: "Block",
+  },
 ];
 
 function Users() {
@@ -61,12 +141,13 @@ function Users() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="p-5 sm:p-6 w-screen sm:w-full ">
-      <h1 className="text-2xl font-poppins uppercase  text-primary font-semibold  mb-1">
+    <div className="p-5 h-fit  w-full  ">
+      <h1 className="text-2xl font-poppins uppercase  text-primary font-semibold  ">
         Users
       </h1>
-      <div className=" border rounded-md shadow-sm">
-        <div className="w-full flex justify-between items-center p-4 mb-2 font-poppins">
+      <br />
+      <div className=" border rounded-xl bg-primary bg-opacity-5 shadow-md p-5">
+        <div className="w-full flex flex-col justify-start items-start md:justify-between md:flex-row md:items-center p-4 mb-2 font-poppins gap-3">
           <div className="relative inline-block text-left">
             <select
               value={selectedValue}
@@ -90,8 +171,8 @@ function Users() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <div className="relative">
+          <div className="flex items-center  gap-2">
+            <div className="relative ">
               <span className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <Search className="text-gray-500 w-5 h-5" />
               </span>
@@ -101,67 +182,49 @@ function Users() {
                 placeholder="Search..."
               />
             </div>
-            <button
+            <div
               onClick={openModal}
-              type="button"
-              className="relative w-[100px] h-[37px] cursor-pointer rounded-md flex items-center border border-btn_bg bg-btn_bg transition-all duration-300 hover:bg-btnborder-btn_bg active:border-primary active:bg-primary"
+              className=" flex items-center text-center p-2 hover:scale-105 transform transition-all ease-in-out duration-300  hover:shadow-md cursor-pointer rounded-lg text-white bg-btn_bg text-nowrap"
             >
-              <span className="text-white font-semibold translate-x-[20px] transition-all duration-300 hover:text-transparent">
-                Add
+              <span className="text-white font-semibold ">Add</span>
+              <span>
+                <Plus className="w-4 h-4 text-bodybg_color" />
               </span>
-              <span className="absolute h-full w-[20px] bg-btn_bg border-btn_bg flex items-center justify-center translate-x-[70px] transition-all duration-300 hover:w-[98px] hover:translate-x-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  stroke="currentColor"
-                  fill="none"
-                  className="w-[18px] stroke-white"
-                >
-                  <line x1="12" y1="5" x2="12" y2="19"></line>
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                </svg>
-              </span>
-            </button>
+            </div>
           </div>
         </div>
-        <div className="relative shadow-lg border sm:rounded-lg overflow-x-auto ">
-          <table className="w-full min-w-[800px] text-sm text-left text-primary dark:text-gray-400">
-            <thead className="text-[14px] text-primary  bg-gray-100 dark:bg-gray-700 dark:text-gray-400 font-poppins">
+        <div className="shadow-lg border h-[calc(100vh-25rem)] hidescroll sm:rounded-xl text-nowrap overflow-auto">
+          <table className="relative w-full  text-sm text-left text-primary dark:text-gray-400">
+            <thead className="text-[14px] text-primary sticky top-0 bg-gray-100 dark:bg-gray-700 dark:text-gray-400 font-poppins z-10">
               <tr>
-                <th scope="col" className="px-4 py-3  ">
+                <th scope="col" className="px-4 py-3">
                   No
                 </th>
-                <th scope="col" className="px-4 py-3  ">
+                <th scope="col" className="px-4 py-3">
                   First Name
                 </th>
-                <th scope="col" className="px-4 py-3 ">
+                <th scope="col" className="px-4 py-3">
                   Last Name
                 </th>
-                <th scope="col" className="px-4 py-3 ">
+                <th scope="col" className="px-4 py-3">
                   Email
                 </th>
-                <th scope="col" className="px-4 py-3 ">
+                <th scope="col" className="px-4 py-3">
                   Mobile
                 </th>
-                <th scope="col" className="px-4 py-3 ">
+                <th scope="col" className="px-4 py-3">
                   Image
                 </th>
-                <th scope="col" className="px-4 py-3 ">
+                <th scope="col" className="px-4 py-3">
                   Designation
                 </th>
-                <th scope="col" className="px-4 py-3 ">
+                <th scope="col" className="px-4 py-3">
                   Date Of Joining
                 </th>
-
-                <th scope="col" className="px-3 py-3 ">
+                <th scope="col" className="px-3 py-3">
                   Status
                 </th>
-                <th scope="col" className="px-2 py-3 ">
+                <th scope="col" className="px-2 py-3">
                   Action
                 </th>
               </tr>
@@ -172,24 +235,23 @@ function Users() {
                   key={index}
                   className="bg-white border-b text-[13px] text-gray-500 font-poppins dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                 >
-                  <td className="px-4 py-2 ">{index + 1}</td>
-
-                  <td className="px-4 py-2 ">{user.firstName}</td>
-                  <td className="px-4 py-3 ">{user.lastName}</td>
-                  <td className="px-4 py-3 ">{user.email}</td>
-                  <td className="px-4 py-3 ">{user.mobile}</td>
-                  <td className="px-4 py-3 ">
+                  <td className="px-4 py-2">{index + 1}</td>
+                  <td className="px-4 py-2">{user.firstName}</td>
+                  <td className="px-4 py-3">{user.lastName}</td>
+                  <td className="px-4 py-3">{user.email}</td>
+                  <td className="px-4 py-3">{user.mobile}</td>
+                  <td className="px-4 py-3">
                     <img
                       src={login}
                       alt={`${user.firstName} ${user.lastName}`}
-                      className=" w-8 h-8 rounded-full"
+                      className="w-8 h-8 rounded-full"
                     />
                   </td>
-                  <td className="px-4 py-3 ">{user.designation}</td>
-                  <td className="px-4 py-3 ">{user.dateOfJoining}</td>
-                  <td className="px-2 py-3 ">
+                  <td className="px-4 py-3">{user.designation}</td>
+                  <td className="px-4 py-3">{user.dateOfJoining}</td>
+                  <td className="px-2 py-3">
                     <span
-                      className={`px-2 py-0 rounded-md  text-xs ${
+                      className={`px-2 py-0 rounded-md text-xs ${
                         user.status === "Active"
                           ? "bg-green-200 text-green-800"
                           : "bg-red-200 text-yellow-800"
@@ -200,10 +262,10 @@ function Users() {
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex gap-1">
-                      <button className=" bg-btn_bg text-xs text-white rounded-md px-2 py-1">
+                      <button className="bg-btn_bg text-xs text-white rounded-md px-2 py-1">
                         Edit
                       </button>
-                      <button className=" bg-red-500 text-xs text-white rounded-md px-2 py-1">
+                      <button className="bg-red-500 text-xs text-white rounded-md px-2 py-1">
                         Remove
                       </button>
                     </div>
@@ -213,7 +275,8 @@ function Users() {
             </tbody>
           </table>
         </div>
-      <Pagination/>
+
+        <Pagination />
       </div>
 
       <Modal isOpen={isModalOpen} onClose={closeModal}>

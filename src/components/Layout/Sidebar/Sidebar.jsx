@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  Home,
-  Users,
-  Settings,
-  ChevronDown,
-  ChevronUp,
-  Menu,
-  X,
-  LayoutGrid,
-} from "lucide-react";
+import { Home, Users, Settings, ChevronDown, ChevronUp, X, LayoutGrid } from 'lucide-react';
 import logo from "../../../assets/images/codei5-logo.png";
 
 const menuItems = [
@@ -44,12 +35,10 @@ const menuItems = [
   },
 ];
 
-const Sidebar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const location = useLocation();
 
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const toggleSubmenu = (title) => {
     setOpenSubmenu(openSubmenu === title ? null : title);
   };
@@ -57,7 +46,9 @@ const Sidebar = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setIsSidebarOpen(false);
+        toggleSidebar(true);
+      } else {
+        toggleSidebar(false);
       }
     };
 
@@ -67,44 +58,30 @@ const Sidebar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    if (window.innerWidth < 768) {
-      setIsSidebarOpen(false);
-    }
-  }, [location]);
-
   return (
     <>
-      <button
-        className="fixed top-4 left-4 z-50 md:hidden bg-[gray-800] text-white p-1 rounded-md"
-        onClick={toggleSidebar}
-        aria-label="Toggle Sidebar"
-      >
-        {isSidebarOpen ? "" : <LayoutGrid className="h-5 w-5 text-primary" />}
-      </button>
-
       <aside
-        className={`fixed top-0 left-0 h-full w-64 sm:w-72 bg-bodybg_color text-gray-100 font-poppins border-x shadow-xl transition-transform duration-300 ease-in-out transform ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 z-40 overflow-y-auto`}
+        className={`fixed inset-y-0 left-0 z-50 w-full h-full bg-primary bg-opacity-5 text-gray-100 font-poppins shadow-xl transition-transform duration-300 ease-in-out transform ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } md:relative md:translate-x-0`}
       >
         <div className="flex flex-col h-full">
           <div className="p-4 flex justify-between items-center">
-            <img className="w-48 " src={logo} alt="Logo" />
+            <img className="w-48" src={logo} alt="Logo" />
             <button
               className="md:hidden text-gray-300 hover:text-white"
-              onClick={toggleSidebar}
+              onClick={() => toggleSidebar(false)}
               aria-label="Close Sidebar"
             >
               <X className="h-6 w-6 text-primary" />
             </button>
           </div>
-          <nav className="flex-1">
+          <nav className="flex-1 overflow-y-auto">
             <ul className="px-2">
               {menuItems.map((item, index) => (
-                <div key={index} className="mb-2">
+                <li key={index} className="mb-2">
                   {item.submenu ? (
-                    <div className=" hover:scale-105 transition-transform duration-400">
+                    <div className="hover:scale-105 transition-transform duration-400">
                       <button
                         onClick={() => toggleSubmenu(item.title)}
                         className={`flex items-center justify-between w-full px-4 py-3 text-left rounded-md transition-colors duration-200 ${
@@ -136,10 +113,7 @@ const Sidebar = () => {
                                     ? "bg-primary text-white"
                                     : "text-primary hover:bg-primary hover:text-white"
                                 }`}
-                                onClick={() =>
-                                  window.innerWidth < 768 &&
-                                  setIsSidebarOpen(false)
-                                }
+                                onClick={() => window.innerWidth < 768 && toggleSidebar(false)}
                               >
                                 {subItem.title}
                               </Link>
@@ -156,22 +130,27 @@ const Sidebar = () => {
                           ? "bg-primary text-white"
                           : "text-gray-300 hover:bg-[rgba(var(--primary),0.1)] hover:text-white"
                       }`}
-                      onClick={() =>
-                        window.innerWidth < 768 && setIsSidebarOpen(false)
-                      }
+                      onClick={() => window.innerWidth < 768 && toggleSidebar(false)}
                     >
                       <item.icon className="w-5 h-5 mr-3" />
                       <span className="font-medium">{item.title}</span>
                     </Link>
                   )}
-                </div>
+                </li>
               ))}
             </ul>
           </nav>
         </div>
       </aside>
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={() => toggleSidebar(false)}
+        ></div>
+      )}
     </>
   );
 };
 
 export default Sidebar;
+
